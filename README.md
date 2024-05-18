@@ -33,6 +33,7 @@ export default function InvoiceStatus({ status }: { status: string }) {
     // ...
 )}
 ```
+
 ## Font optimization
 
 **Why optimize fonts?**  
@@ -41,3 +42,10 @@ Fonts play a significant role in the design of a website, but using custom fonts
 **[Cumulative Layout Shift](https://web.dev/articles/cls)** is a metric used by Google to evaluate the performance and user experience of a website. With fonts, layout shift happens when the browser initially renders text in a fallback or system font and then swaps it out for a custom font once it has loaded. This swap can cause the text size, spacing, or layout to change, shifting elements around it.
 
 Next.js automatically optimizes fonts in the application when you use the `next/font` module. **It downloads font files at build time and hosts them with your other static assets.** This means when a user visits your application, there are no additional network requests for fonts which would impact performance.
+
+**Learn more:**  
+**[Adding multiple fonts](https://nextjs.org/docs/app/building-your-application/optimizing/fonts#local-fonts)**  
+**[Font module API](https://nextjs.org/docs/app/api-reference/components/font#font-function-arguments)**
+
+> **Good to know:**  
+> We recommend using **[variable fonts](https://fonts.google.com/variablefonts)** for the best performance and flexibility.
