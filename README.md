@@ -49,3 +49,18 @@ Next.js automatically optimizes fonts in the application when you use the `next/
 
 > **Good to know:**  
 > We recommend using **[variable fonts](https://fonts.google.com/variablefonts)** for the best performance and flexibility.
+
+## The `<Image>` component
+
+The `<Image>` Component is an extension of the HTML `<img>` tag, and comes with automatic image optimization, such as:
+
+- **Preventing layout shift** automatically when images are loading.
+- **Resizing images** to avoid shipping large images to devices with a smaller viewport.
+- **Lazy loading images** by default (images load as they enter the viewport).
+- **Serving images in modern formats**, like **[WebP](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#webp)** and **[AVIF](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#avif_image)**, when the browser supports it.
+
+**Learn more:**  
+**[`<Image>` component API](https://nextjs.org/docs/pages/api-reference/components/image)**  
+**[Image Optimization Docs](https://nextjs.org/docs/app/building-your-application/optimizing/images)**  
+**[Improving web performance with images (MDN)](https://developer.mozilla.org/en-US/docs/Learn/Performance/Multimedia)**  
+**[Web Fonts (MDN)](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts)**
