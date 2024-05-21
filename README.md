@@ -124,3 +124,7 @@ Learn more about **[how navigation works](https://nextjs.org/docs/app/building-y
 ### Showing active links
 
 To show active link you need to get the user's **current path** (current **segment(s) chain**) from the URL. Next.js provides a hook called **[`usePathname()`](https://nextjs.org/docs/app/api-reference/functions/use-pathname)** that you can import from `next/navigation`.
+
+## Setting up database
+
+TODO: [take notes](https://nextjs.org/learn/dashboard-app/setting-up-your-database)
