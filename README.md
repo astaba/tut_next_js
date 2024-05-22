@@ -218,6 +218,7 @@ By using this pattern, as in `data.ts`, you can:
 
 **Cons:**  
 However, there is one disadvantage of relying only on this JavaScript pattern: **what happens if one data request is slower than all the others?**
+
 ## Static and dynamic rendering
 
 ### Static rendering
@@ -254,3 +255,6 @@ By default, `@vercel/postgres` doesn't set its own caching semantics. This allow
 You can use a Next.js API called `unstable_noStore` from `next/cache` inside your Server Components or data fetching functions to opt out of static Rendering  
 **Good to known**:  
 `unstable_noStore` is an experimental API and may change in the future. If you prefer to use a stable API in your own projects, you can also use the **Segment Config Option:** [`export const dynamic = "force-dynamic"`](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config)
+
+**Cons:**  
+With dynamic rendering, **your application is only as fast as your slowest data fetch.**
