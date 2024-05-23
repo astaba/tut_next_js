@@ -363,4 +363,19 @@ You might have noticed you used two different ways to extract search params. Whe
 - `<Table>` is a Server Component that fetches its own data, so you can pass the `searchParams` prop from the `page` to the component.
 
 **General rule**:  
-If you want to read the params from the client, use the `useSearchParams()` hook as this avoids having to go back to the server. 
+If you want to read the params from the client, use the `useSearchParams()` hook as this avoids having to go back to the server.
+
+### Best practices: Debouncing
+
+Quering your database on every key stroke is particularly damaging for resources in case your application skale up. That is where **debouncing** comes into play.
+
+**Debouncing:**  
+It is a programming practice that limits the rate at which a function can fire.
+
+**How:**
+
+1. When an event that should be debounced occurs, a timer starts.
+2. If the event occurs again before the timer expires, the timer is reset.
+3. If the timer reaches the end of its countdown, the debounced function is executed.
+
+You can implement debouncing in a few ways, including manually creating your own debounce function. To keep things simple, we'll use a library called **[use-debounce](https://www.npmjs.com/package/use-debounce)**
