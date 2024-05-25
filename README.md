@@ -127,7 +127,7 @@ To show active link you need to get the user's **current path** (current **segme
 
 ## Setting up database
 
-<!-- TODO: [take notes](https://nextjs.org/learn/dashboard-app/setting-up-your-database) -->
+TODO: [take notes](https://nextjs.org/learn/dashboard-app/setting-up-your-database)
 
 ## Fetching data
 
@@ -304,9 +304,7 @@ Here, you're using a route group to ensure `loading.tsx` only applies to your da
 **React `Suspense` API** allows you to defer rendering parts of your application until some condition is met (e.g. data is loaded). You can wrap your dynamic components in Suspense. Then, pass it a fallback component to show while the dynamic component loads.
 
 > NOTE: The `RevenueChart` component is representational only. For data visualization UI, check out:
-> <https://www.tremor.so/>
-> <https://www.chartjs.org/>
-> <https://airbnb.io/visx/>
+> <https://www.tremor.so/> > <https://www.chartjs.org/> > <https://airbnb.io/visx/>
 
 ### Deciding where to place your Suspense boundaries
 
@@ -400,3 +398,27 @@ Adding **pagination** allows users to navigate through the different pages to vi
 2. associating `usePathname` with the preceding import, you define a util function to generate on the fly URL partial string updated with the contextual page number query.
 3. the `generatePagination` util function requires `totalPages` only known after the response from the database. So, since `Pagination` is a client component, `totalPages` is fetched from the **parent** `page` component (which is a server component) and received as `props`.
 4. **Lastly:** in the `Search` component **reset to 1** page query for each new query to work.
+
+## Data mutation
+
+**What are Server Actions?**  
+**React Server Actions** allow you to run asynchronous code directly on the server. They eliminate the need to create API endpoints to mutate your data. Instead, you write asynchronous functions that execute on the server and can be invoked from your **Client** or **Server Components**.  
+Security is a top priority for web applications, as they can be vulnerable to various threats. This is where **Server Actions** come in. They offer an effective security solution, protecting against different types of attacks, securing your data, and ensuring authorized access. Server Actions achieve this through techniques like **POST requests**, **encrypted closures**, **strict input checks**, **error message hashing**, and **host restrictions**, all working together to significantly enhance your app's safety.
+
+### Creating an invoices
+
+1. **Create a form on a new route**
+   To start, inside the `/invoices` folder, add a new route segment called `/create` with a `page.tsx` file.
+
+2. **Create a server action**
+   By adding the `"use server"`, you mark all the exported functions within the file as **server functions**. These server functions can then be imported into **Client** and **Server components**, making them extremely versatile.  
+   You can also write **Server Actions** directly inside **Server Components** by adding `"use server"` inside the action. But for this course, we'll keep them all organized in a separate file.  
+   **Good to know**: In HTML, you'd pass a URL to the action attribute. This URL would be the destination where your form data should be submitted (usually an API endpoint).
+   However, in React, the `action` attribute is considered a special prop - meaning React builds on top of it to allow actions to be invoked.
+   Behind the scenes, Server Actions create a `POST` API endpoint. This is why you don't need to create API endpoints manually when using Server Actions.
+
+3. **Extract the data from `formData`**  
+    The `action` callback function recieve by default a `formData` object with a [couple of handy methods](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append) to extract data.  
+   **Tip**: If you're working with forms that have many fields, you may want to consider using the [`entries()`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/entries) method with JavaScript's [`Object.fromEntries()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries). For example: `const rawFormData = Object.fromEntries(formData.entries())`
+
+TODO: [take notes](https://nextjs.org/learn/dashboard-app/mutating-data)
