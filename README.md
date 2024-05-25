@@ -303,6 +303,11 @@ Here, you're using a route group to ensure `loading.tsx` only applies to your da
 
 **React `Suspense` API** allows you to defer rendering parts of your application until some condition is met (e.g. data is loaded). You can wrap your dynamic components in Suspense. Then, pass it a fallback component to show while the dynamic component loads.
 
+> NOTE: The `RevenueChart` component is representational only. For data visualization UI, check out:
+> <https://www.tremor.so/>
+> <https://www.chartjs.org/>
+> <https://airbnb.io/visx/>
+
 ### Deciding where to place your Suspense boundaries
 
 Where you place your Suspense boundaries will depend on a few things:
