@@ -430,11 +430,20 @@ Note how `redirect` is being called outside of the `try/catch` block. This is be
 ### Handling all errors with `error` file
 
 If an error occur within the `action` before the `try/catch` block, it is displayed in the localhost during development but would break the whole application in production.  
-To enhance user eperience the [error file](https://nextjs.org/docs/app/api-reference/file-conventions/error) can be used **to define a UI boundary for a route segment**. It serves as a **catch-all** for unexpected errors and allows you to **display a fallback UI** to your users. 
+To enhance user eperience the [error file](https://nextjs.org/docs/app/api-reference/file-conventions/error) can be used **to define a UI boundary for a route segment**. It serves as a **catch-all** for unexpected errors and allows you to **display a fallback UI** to your users.
 
-**How:**  
+**How:**
 
 - `"use client"` - `error.tsx` needs to be a Client Component.
 - It accepts two props:
-    1. `error`: This object is an instance of JavaScript's native Error object.
-    2. `reset`: This is a function to reset the error boundary. When executed, the function will try to re-render the route segment.
+  1. `error`: This object is an instance of JavaScript's native Error object.
+  2. `reset`: This is a function to reset the error boundary. When executed, the function will try to re-render the route segment.
+
+### Handling 404 errors with the `notFound` function
+
+Another way you can handle errors gracefully is by using the `notFound` function. While `error.tsx` is useful for catching all errors, `notFound` can be used when you try to fetch a resource that doesn't exist.  
+For example if you visit the url `/app/dashboard/invoices/[id]/edit` with a fake `id` the **catch-all** `error` will fire, which is suboptimal when you need to handle **not-found resources** more specificely.
+
+**How:**  
+On the very route leaf (with a `page` file) you want to implement granular error handling create a `not-found` file within which you import `{ notFound }` function from `next/navigation`. You can then fire it on any error that fits your usage of **404 error** or **not found resource**.  
+**Remember:** `notFound` will take precedence over `error.tsx,` so you can reach out for it **when you want to handle more specific errors!**
