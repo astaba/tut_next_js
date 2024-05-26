@@ -422,3 +422,19 @@ Security is a top priority for web applications, as they can be vulnerable to va
    **Tip**: If you're working with forms that have many fields, you may want to consider using the [`entries()`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/entries) method with JavaScript's [`Object.fromEntries()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries). For example: `const rawFormData = Object.fromEntries(formData.entries())`
 
 TODO: [take notes](https://nextjs.org/learn/dashboard-app/mutating-data)
+
+## Handling errors
+
+Note how `redirect` is being called outside of the `try/catch` block. This is because `redirect` works **by throwing an error**, which would be caught by the catch block. To avoid this, you can call `redirect` after `try/catch.` `redirect` would only be reachable if `try` is successful.
+
+### Handling all errors with `error` file
+
+If an error occur within the `action` before the `try/catch` block, it is displayed in the localhost during development but would break the whole application in production.  
+To enhance user eperience the [error file](https://nextjs.org/docs/app/api-reference/file-conventions/error) can be used **to define a UI boundary for a route segment**. It serves as a **catch-all** for unexpected errors and allows you to **display a fallback UI** to your users. 
+
+**How:**  
+
+- `"use client"` - `error.tsx` needs to be a Client Component.
+- It accepts two props:
+    1. `error`: This object is an instance of JavaScript's native Error object.
+    2. `reset`: This is a function to reset the error boundary. When executed, the function will try to re-render the route segment.

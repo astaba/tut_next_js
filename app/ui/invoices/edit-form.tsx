@@ -13,6 +13,10 @@ import { CustomerField, InvoiceForm } from '@/app/lib/definitions';
 import { Button } from '@/app/ui/button';
 import { updateInvoice } from '@/app/lib/actions';
 
+// TODO: In case of invalid input, the catch error boundary
+// in the ancestor route is not enough to provide proper feedback
+// to the user. Implement form validation with reactForm and zod.
+
 export default function EditInvoiceForm({
   invoice,
   customers,
