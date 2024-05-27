@@ -447,3 +447,9 @@ For example if you visit the url `/app/dashboard/invoices/[id]/edit` with a fake
 **How:**  
 On the very route leaf (with a `page` file) you want to implement granular error handling create a `not-found` file within which you import `{ notFound }` function from `next/navigation`. You can then fire it on any error that fits your usage of **404 error** or **not found resource**.  
 **Remember:** `notFound` will take precedence over `error.tsx,` so you can reach out for it **when you want to handle more specific errors!**
+
+## Improving accessibility
+
+### Form validation with React Form status
+
+NOTE: Impementing **[server-side form validation with `useFormState`](https://nextjs.org/learn/dashboard-app/improving-accessibility)**
