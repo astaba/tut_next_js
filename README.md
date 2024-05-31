@@ -453,3 +453,9 @@ On the very route leaf (with a `page` file) you want to implement granular error
 ### Form validation with React Form status
 
 NOTE: Impementing **[server-side form validation with `useFormState`](https://nextjs.org/learn/dashboard-app/improving-accessibility)**
+
+## Adding Authentication
+
+So, **authentication** checks who you are, and **authorization** determines what you can do or access in the application.
+
+NOTE: How to add authentication to your app using **[NextAuth.js](https://nextjs.org/learn/dashboard-app/adding-authentication#nextauthjs)**
