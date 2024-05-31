@@ -459,3 +459,9 @@ NOTE: Impementing **[server-side form validation with `useFormState`](https://ne
 So, **authentication** checks who you are, and **authorization** determines what you can do or access in the application.
 
 NOTE: How to add authentication to your app using **[NextAuth.js](https://nextjs.org/learn/dashboard-app/adding-authentication#nextauthjs)**
+
+## Adding metadata
+
+Metadata plays a significant role in **enhancing a webpage's SEO**, making it more accessible and understandable for search engines and social media platforms. Proper metadata helps search engines effectively index webpages, improving their ranking in search results. Additionally, **metadata like Open Graph** improves the appearance of shared links on social media, making the content more appealing and informative for users.
+
+NOTE: [See more](https://nextjs.org/learn/dashboard-app/adding-metadata)
