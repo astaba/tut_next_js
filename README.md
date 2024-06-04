@@ -2,7 +2,7 @@
 
 This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
 
-For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
+For more information, see the **[course curriculum](https://nextjs.org/learn)** on the Next.js Website, and the **[final project](https://next-learn-dashboard.vercel.sh/)** (`user@nextmail.com`, 123456)
 
 ## Styling
 
@@ -347,16 +347,19 @@ Instead of using **client side state** to implement search here are the benefits
 
 ### How?
 
-1. **Capture user's input and update URL**  
+1. **`use client`**  
+    * The first thing to notice in the `Search` component is the top level directive, which is required not only because we intend to import some **hook functions**, but mostly because it is required to be able to use **event listener** as on the `onChange` prop.  
+2. **Capture user's input and update URL**  
    In the `Search` component add an event handler to the `onChange` event listener of the `input` element. Doing so you can retrieve the user's input value and store it in the **current URL** instead of using `useState`. To do it, create a new URL search params based on the current one with `useSearchParams` (it allows you to access the parameters of the current URL. For example, the search params for this URL `/dashboard/invoices?page=1&query=pending` would look like this: `{page: '1', query: 'pending'}`.); and store those values in the current ULR by updating the **browser history stack** with `usePathname` and `useRouter.replace()`.
-2. **Keep URL in sync with the input field**  
+3. **Keep URL in sync with the input field**  
    To ensure the input field is in sync with the URL and will be populated when sharing, you can pass a `defaultValue` to `input` by reading from searchParams.  
    **Good to know:**  
    `defaultValue` vs. `value` / **Uncontrolled** vs. **Controlled**  
    If you're using state to manage the value of an input, you'd use the `value` attribute to make it a controlled component. This means React would manage the input's state.  
    However, since you're not using `state`, you can use `defaultValue`(a React prop acting as the HTML input value attribute when used as initial default value). This means the native `input` will manage its own state. This is okay since you're saving the search query to the URL instead of `state`.
-3. **Retrieve data from the URL on the server and launch request**  
-   Use the [`searchParams`](https://nextjs.org/docs/app/api-reference/file-conventions/page), a built-in prop of `Page` server components, which is an oject similar to the returned value of `useSearchParams`.
+4. **Retrieve data from the URL on the server and launch request**  
+   Use the [`searchParams`](https://nextjs.org/docs/app/api-reference/file-conventions/page), a built-in prop of `Page` server components, which is an oject similar to the returned value of `useSearchParams`.  
+   **Notice** the prop `key={query + currentPage}` of the `Suspense` component (around the `Table` component) to ensure `Suspense` is re-rendered each time `query` is updated.  
 
 ### When to use the `useSearchParams()` hook vs. the `searchParams` prop?
 
@@ -430,7 +433,7 @@ Note how `redirect` is being called outside of the `try/catch` block. This is be
 ### Handling all errors with `error` file
 
 If an error occur within the `action` before the `try/catch` block, it is displayed in the localhost during development but would break the whole application in production.  
-To enhance user eperience the [error file](https://nextjs.org/docs/app/api-reference/file-conventions/error) can be used **to define a UI boundary for a route segment**. It serves as a **catch-all** for unexpected errors and allows you to **display a fallback UI** to your users.
+To enhance user experience the [error file](https://nextjs.org/docs/app/api-reference/file-conventions/error) can be used **to define a UI boundary for a route segment**. It serves as a **catch-all** for unexpected errors and allows you to **display a fallback UI** to your users.
 
 **How:**
 
@@ -445,7 +448,7 @@ Another way you can handle errors gracefully is by using the `notFound` function
 For example if you visit the url `/app/dashboard/invoices/[id]/edit` with a fake `id` the **catch-all** `error` will fire, which is suboptimal when you need to handle **not-found resources** more specificely.
 
 **How:**  
-On the very route leaf (with a `page` file) you want to implement granular error handling create a `not-found` file within which you import `{ notFound }` function from `next/navigation`. You can then fire it on any error that fits your usage of **404 error** or **not found resource**.  
+On the very route leaf (with a `page` file) you want to implement granular error handling create a `not-found`. Within the `page` or the sub-route `page` prone to such error import `{ notFound }` function from `next/navigation`. You can then fire it on any error that fits your usage of **404 error** or **not found resource**.  
 **Remember:** `notFound` will take precedence over `error.tsx,` so you can reach out for it **when you want to handle more specific errors!**
 
 ## Improving accessibility
