@@ -4,7 +4,7 @@ import { useSearchParams, usePathname } from 'next/navigation';
 import clsx from 'clsx';
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
-import { generatePagination } from '@/app/lib/utils';
+import { generatePagination, getRandString } from '@/app/lib/utils';
 
 export default function Pagination({ totalPages }: { totalPages: number }) {
   const pathname = usePathname();
@@ -45,7 +45,9 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 
             return (
               <PaginationNumber
-                key={page}
+                // FIX: Don't use page as key value
+                // At some point allPages contains two "..." elements
+                key={getRandString(index)}
                 href={createPageURL(page)}
                 page={page}
                 position={position}

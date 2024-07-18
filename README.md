@@ -96,7 +96,7 @@ Since the new layout you've just created (`/app/dashboard/layout.tsx`) is unique
 ## Navigating between pages
 
 **Why optimize navigation?**  
-To link between pages, you'd traditionally use the `<a>` HTML element. but using this options in React will launch to the server a new request, cause a full refresh on the client resulting in a sub-optimal user experience far from authentic [SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA) experience.
+To link between pages, you'd traditionally use the `<a>` HTML element, but using this options in React will launch a new request to the server, cause a full refresh on the client resulting in a sub-optimal user experience far from authentic [SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA) experience.
 
 ### The `<Link>` component
 
